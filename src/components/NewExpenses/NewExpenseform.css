@@ -1,0 +1,19 @@
+.Expense-form{
+    color :white;
+    padding:25px;
+
+}
+
+button{
+    padding:5px;
+    margin:20px 5px 20px 5px;
+}
+#packet{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin :10px 25px 10px 25px;
+    background-color: black;
+    border : 2px solid white;
+    border-radius: 5px;
+}

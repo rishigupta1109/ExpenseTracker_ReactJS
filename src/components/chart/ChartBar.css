@@ -1,0 +1,29 @@
+#bar{
+    background-color: #8a2be2;
+    
+   
+    
+}
+#barC{
+    background-color: #50BFE6;
+    width: 10px;
+    height: 80px;
+    margin: 20px 10px 10px 30px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    border : 3px solid whitesmoke;
+    border-radius: 5px;
+    
+}
+label{
+    color:white;
+    margin: 20px 10px 10px 30px;
+}
+#c{display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}

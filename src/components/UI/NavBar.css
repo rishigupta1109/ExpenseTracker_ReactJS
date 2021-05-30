@@ -1,0 +1,9 @@
+#navBar{
+    background-color: rgb(154, 88, 240);
+    color:rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-style: italic;
+}

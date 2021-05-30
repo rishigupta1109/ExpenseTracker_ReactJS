@@ -4,6 +4,7 @@
     border : 2px solid #E92EFB;
     border-radius: 5px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-around;
     /* flex-wrap: wrap; */

@@ -1,16 +1,16 @@
 #cardV{
     margin :10px 25px 10px 25px;
     background-color: rgb(255, 255, 255);
-    border : 2px solid white;
+    border : 2px solid #E92EFB;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     /* flex-wrap: wrap; */
-    box-shadow: 1px 1px 0px rgb(209, 133, 240),
-    2px 2px 0px rgb(209, 133, 240),
-    3px 3px 0px rgb(209, 133, 240),
-    4px 4px 0px rgb(209, 133, 240),
-    5px 5px 0px rgb(209, 133, 240),
-    6px 6px 0px rgb(209, 133, 240);
+    box-shadow: 1px 1px 0px #440BD4,
+    2px 2px 0px #440BD4,
+    3px 3px 0px #440BD4,
+    4px 4px 0px #440BD4,
+    5px 5px 0px #440BD4,
+    6px 6px 0px #440BD4;
 }

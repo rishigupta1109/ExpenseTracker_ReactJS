@@ -7,7 +7,7 @@ const Chart=(props)=>{
     return(
         <CardV>
         <div id="chart">
-            {dp.map((element,index)=>{return (<ChartBar key={index} height={element} index={index}></ChartBar>)} )}
+            {dp.map((element,index)=>{return (<ChartBar length={props.datapoints.length} key={index} height={element} index={index}></ChartBar>)} )}
         </div>
         </CardV>
     )

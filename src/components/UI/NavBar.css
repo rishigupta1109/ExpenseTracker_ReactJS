@@ -1,6 +1,6 @@
 #navBar{
-    background-color: rgb(154, 88, 240);
-    color:rgb(255, 255, 255);
+    background-color:#04005E;
+    color:white;
     display: flex;
     justify-content: center;
     font-family: sans-serif;

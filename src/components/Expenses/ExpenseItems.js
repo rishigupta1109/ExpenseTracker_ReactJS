@@ -16,7 +16,7 @@ const clickHandler=(e)=>{
         <Card>
             <ExpenseDate date={props.date}  ></ExpenseDate>
             <div  className="dib">{props.title} </div>
-            <div className="dib" id="amt" >{props.amt} </div>
+            <div className="dib" id="amt" >{props.amt}$ </div>
             <button value={props.title} className="new-expense-button" onClick={clickHandler}>Delete</button>
         </Card>
         </div>

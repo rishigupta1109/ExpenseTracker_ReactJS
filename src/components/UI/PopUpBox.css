@@ -1,0 +1,42 @@
+#pop-box{
+   
+    flex-direction: column;
+    background-color: white;
+   width:50%;
+   height:50%;
+    position: absolute;
+   
+    
+    margin-top: 170px;
+    border-radius: 5px;
+}
+#pop-up-box{
+    display: flex;
+    justify-content: center;
+   
+    
+}
+#fr{
+    background-color: blue;
+    color :white;
+    padding:5px 30px 5px 30px;
+    font-size: larger;
+
+}
+#sr{
+ 
+    font-size: xx-large;
+
+}
+#pop-button{
+  font-size: xx-large;
+}
+#backdrop-box{
+    background-color: black;
+    opacity:40%;
+    position: absolute;
+    height:100%;
+    width: 100%;
+
+
+}

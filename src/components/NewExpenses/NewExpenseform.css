@@ -1,12 +1,51 @@
 .Expense-form{
     color :white;
     padding:25px;
+    
 
 }
+.expense-form-container{
+    margin :10px 25px 10px 25px;
+    background-color: #04005E;
+    border : 2px solid  #04005E;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    /* flex-wrap: wrap; */
+    box-shadow: 1px 1px 0px #440BD4,
+    2px 2px 0px #440BD4,
+    3px 3px 0px #440BD4,
+    4px 4px 0px #440BD4,
+    5px 5px 0px #440BD4,
+    6px 6px 0px #440BD4;
+  
+}
+@media only screen and (max-width: 800px){
+    #expense-form-container  { 
+    margin :0px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
 
+}
+.Expense-form{
+   display: flex;
+   flex-direction: column;
+    
+
+}
+#but{
+    margin:5px !important;
+}
+
+
+}
 button{
     padding:5px;
     margin:20px 5px 20px 5px;
+    
 }
 #packet{
     display:flex;
@@ -16,4 +55,7 @@ button{
     background-color: black;
     border : 2px solid white;
     border-radius: 5px;
+}
+button:hover{
+    cursor: pointer;
 }

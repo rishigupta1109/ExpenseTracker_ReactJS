@@ -7,6 +7,7 @@ import NewExpenseform from "./components/NewExpenses/NewExpenseform";
 import ExpenseItems from "./components/Expenses/ExpenseItems";
 import Chart from "./components/chart/Chart";
 import NavBar from "./components/UI/NavBar";
+
 function App() {
   // const [selectedYear, setselectedYear] = useState("2020");
   let Expensedata = [
@@ -117,6 +118,7 @@ function App() {
 
   return (
     <div id="container">
+    
       <NavBar></NavBar>
       {button}
       <CardV>
@@ -129,7 +131,7 @@ function App() {
           ></ExpenseFilter>
         </Card>
 
-        {filteredData.length === 0 && <legend>No Data Available</legend>}
+        {filteredData.length === 0 && <legend id="nda">No Data Available</legend>}
         {filteredData.length > 0 &&
           filteredData.map((Data) => {
             return (

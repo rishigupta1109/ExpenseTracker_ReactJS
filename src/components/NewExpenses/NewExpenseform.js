@@ -1,6 +1,9 @@
 import "./NewExpenseform.css";
 import React ,{useState } from "react";
-import Card from "../UI/card"
+import Card from "../UI/card";
+import PopUpBox from "../UI/PopUpBox";
+
+
 
 const NewExpenseform=(props)=>{
     const [state, setstate] = useState({
@@ -8,6 +11,11 @@ const NewExpenseform=(props)=>{
         Date:"",
         Amt:""
     })
+
+    const[Bool,setBool]=useState(false);
+
+
+    
 const ChangeHandlerTitle=(e)=>{
     setstate((state)=>{
       return { ...state,
@@ -36,14 +44,18 @@ const ChangeHandlerAmt=(e)=>{
 
 
 
-let submitHandler=(e)=>{
-  e.preventDefault();
-    let submittedForm={
+let submitHandler=(e)=>{e.preventDefault();
+  
+  if(state.Title===""||state.Amt===""||state.Date===""){
+      setBool(true);
+  }
+  else{  let submittedForm={
         Title:state.Title,
         Date:new Date(state.Date),
         Amt:state.Amt
 
     }
+    
     console.log("IN NEWEXPENSEFORM")
     console.log(submittedForm)
    
@@ -53,31 +65,37 @@ let submitHandler=(e)=>{
         Amt:"",
         Date:""
     })
-    
+    }
 
    
 }
+const clickHandler=()=>{
+    setBool(false);
+}
     return (
-        <Card >
+        <div className="expense-form-container" >
+       {Bool&& <PopUpBox click={clickHandler} ></PopUpBox>}
           <form onSubmit={submitHandler}>
-        <Card>
+        <div className="expense-form-container">
       
         <div className="Expense-form">
-        ExpenseName <input required  value={state.Title} onChange={ChangeHandlerTitle} type="text"></input>
+        ExpenseName <input   value={state.Title} onChange={ChangeHandlerTitle} type="text"></input>
         </div>
         <div className="Expense-form">
-        Date <input required value={state.Date} onChange={ChangeHandlerDate} type="date"></input>
+        Date <input  value={state.Date} onChange={ChangeHandlerDate} type="date"></input>
         </div>
         <div className="Expense-form">
-        Amount <input required value={state.Amt} onChange={ChangeHandlerAmt} type="number"></input>
+        Amount <input  value={state.Amt} onChange={ChangeHandlerAmt} type="number"></input>
         </div>
         
-        </Card>
-        <button  className="new-expense-button" style={{marginLeft:"420px"}} type="submit">Submit Expense</button>
+        </div>
+        <div id="button-box">
+        <button  className="new-expense-button" id="but" style={{marginLeft:"420px"}} type="submit">Submit Expense</button>
+        </div>
         </form>
         
         
-        </Card>
+        </div>
     )
 }
 

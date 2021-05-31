@@ -8,12 +8,17 @@
  min-height: 900px;
  padding-top: 0px 25px 25px 25px;
 }
+
 legend{
   color :white;
+  font-weight: bolder;
   margin:10px;
 }
+#nda{
+  color:black !important;
+}
 .new-expense-button{
-  border: none;
+  border: 2px solid rgba(162, 162, 252, 0.849);
   border-radius: 4px;
   size: 150%;
   background-color: #440BD4;

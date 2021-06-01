@@ -1,6 +1,6 @@
 import "./NewExpenseform.css";
 import React ,{useState } from "react";
-import Card from "../UI/card";
+// import Card from "../UI/card";
 import PopUpBox from "../UI/PopUpBox";
 
 
@@ -89,7 +89,7 @@ const clickHandler=()=>{
         </div>
         
         </div>
-        <div id="button-box">
+        <div className="button-box">
         <button  className="new-expense-button" id="but" style={{marginLeft:"420px"}} type="submit">Submit Expense</button>
         </div>
         </form>

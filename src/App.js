@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState,useEffect} from "react";
 import ExpenseFilter from "./components/Expenses/ExpenseFilter";
 import Card from "./components/UI/card";
 import CardV from "./components/UI/Card-V";
@@ -7,9 +7,12 @@ import NewExpenseform from "./components/NewExpenses/NewExpenseform";
 import ExpenseItems from "./components/Expenses/ExpenseItems";
 import Chart from "./components/chart/Chart";
 import NavBar from "./components/UI/NavBar";
+import Login from "./components/Login/Login";
+import Signup from "./components/signup/signup";
 
 function App() {
   // const [selectedYear, setselectedYear] = useState("2020");
+  
   let Expensedata = [
     { Title: "Food", Amt: "100", Date: "2020-06-06" },
     { Title: "Goods", Amt: "200", Date: "2021-06-07" },
@@ -115,11 +118,42 @@ function App() {
    setExpenseData(Deleteddata);
 
   }
+  const [IsLoggedIn,setIsLoggedIn]=useState(false);
+  const [signUp,setsignup]=useState(false);
+const LoginformSubmitHandler=()=>{
+  setIsLoggedIn(true);
+}
+ const logout=()=>{
+  setIsLoggedIn(false);
+  localStorage.removeItem("LoggedIn")
+ }
+ useEffect(()=>{
+  if(localStorage.getItem("LoggedIn")==='1'){setIsLoggedIn(true);}
+  else{setIsLoggedIn(false);}
+  
+},[])
+const signup=()=>{
+setsignup(true);
+}
+const login=()=>{
+  setsignup(false);
+}
+const SignupformSubmitHandler=()=>{
+  setsignup(false);
+
+}
+const [email,setemail]=useState("");
+const getEmail=(Email)=>{
+  setemail(Email);
+}
+
 
   return (
     <div id="container">
-    
-      <NavBar></NavBar>
+    <NavBar email={email} bool={IsLoggedIn} bool2={signUp} signup={signup} logout={logout} login={login}></NavBar>
+    {!IsLoggedIn && !signUp && <Login getEmail={getEmail} OnFormSubmit={LoginformSubmitHandler}></Login>}
+    {!IsLoggedIn && signUp && <Signup OnFormSubmit={SignupformSubmitHandler}></Signup> }
+      {IsLoggedIn &&<React.Fragment>(
       {button}
       <CardV>
         {chart}
@@ -144,7 +178,7 @@ function App() {
               ></ExpenseItems>
             );
           })}
-      </CardV>
+      </CardV>)</React.Fragment>}
     </div>
   );
 }

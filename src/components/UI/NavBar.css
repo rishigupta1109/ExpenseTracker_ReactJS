@@ -2,8 +2,25 @@
     background-color:#04005E;
     color:white;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     font-family: sans-serif;
     font-weight: bolder;
     font-style: italic;
+    padding-left: 20px;
+}
+#logout-button{
+    margin-left: auto;
+
+}
+@media(max-width:800px){
+    #logout-button{
+        margin-left: 100px;
+    
+    }
+    #navBar{
+        
+        display: flex;
+        justify-content: flex-start;
+       
+    }
 }

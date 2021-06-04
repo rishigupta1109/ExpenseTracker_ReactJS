@@ -74,7 +74,7 @@ const clickHandler=()=>{
 }
     return (
         <div className="expense-form-container" >
-       {Bool&& <PopUpBox click={clickHandler} ></PopUpBox>}
+       {Bool&& <PopUpBox click={clickHandler} ><>Please fill all inputs</></PopUpBox>}
           <form onSubmit={submitHandler}>
         <div className="expense-form-container">
       

@@ -18,7 +18,7 @@ const Modal=(props)=>{
     <div>Error</div>
     </div>
     <div id="sr">
-    <div>Please fill all inputs</div>
+    <div>{props.child}</div>
     <button className="new-expense-button" id="pop-button" onClick={clickHandler} >OK!</button>
     </div>
    
@@ -32,7 +32,7 @@ const PopUpBox = (props) => {
     
   return (<React.Fragment>
     {ReactDOM.createPortal( <BackDrop />,document.getElementById("backdrop")) }
-    {ReactDOM.createPortal( <Modal click={props.click} />,document.getElementById("pop-up-box")) }
+    {ReactDOM.createPortal( <Modal child={props.children} click={props.click} />,document.getElementById("pop-up-box")) }
 
     </React.Fragment>
   );

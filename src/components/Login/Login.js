@@ -1,64 +1,83 @@
 import Card from "../UI/card";
-import React ,{useState,useEffect} from "react"
+import PopUpBox from "../UI/PopUpBox";
+import React ,{useState,useEffect,useReducer} from "react"
 import "./Login.css"
+const UserNamereducerFn=(state,action)=>{
+if(action.type==="change"){
+    return {...state,UserName:action.val}
+}
+else if(action.type==="Blur"){
+    return {...state,isValid:action.val}
+}
+else{return {UserName:"" ,isValid:false} }
+}
+const UserPasswordreducerFn=(state,action)=>{
+    if(action.type==="change"){
+        return {...state,UserPassword:action.val}
+    }
+    else if(action.type==="Blur"){
+        return {...state,isValid:action.val}
+    }
+    else{return {UserPassword:"" ,isValid:false} }
+    }
 const Login=(props)=>{
-    const [UserName,setUserName]=useState("");
-    const [UserPassword,setUserPassword]=useState("");
+    // const [UserName,setUserName]=useState("");
+    const [pop,setpop]=useState(false)
+    // const [UserPassword,setUserPassword]=useState("");
     const [valid,setValid]=useState(false);
+    const[userNameState,setuserNameState]=useReducer(UserNamereducerFn,{UserName:"" ,isValid:false})
+    const[UserPasswordState,setUserPasswordState]=useReducer(UserPasswordreducerFn,{UserPassword:"" ,isValid:false})
 
 const formSubmitHandler=(e)=>{
 
     e.preventDefault();
-    if(valid){if(UserPassword===localStorage.getItem(`${UserName}`)){
-        props.getEmail(UserName);
+    if(valid){if(UserPasswordState.UserPassword===localStorage.getItem(`${userNameState.UserName}`)){
+        props.getEmail(userNameState.UserName);
         props.OnFormSubmit();
-       
+        localStorage.setItem("UserName",userNameState.UserName);
+
     localStorage.setItem("LoggedIn",'1');}
-else{alert("wrong UserName or Password")}}
+else{setpop(true)}}
  
 }
-const [string,setstring]=useState({string1:false,string2:false});
+
 const ChangeHandlerUserName=(e)=>{
-    setUserName(e.target.value);
+    setuserNameState({type:"change",val:e.target.value});
    
 }
 
 const ChangeHandlerUserPassword=(e)=>{
-    setUserPassword(e.target.value);
+    setUserPasswordState({type:"change",val:e.target.value});
   
 }
 useEffect(()=>{
     const identifier=setTimeout(()=>{
-        if(UserName.includes('@')&&UserPassword.trim().length>6){setValid(true);}
+        if(userNameState.UserName.includes('@')&&UserPasswordState.UserPassword.trim().length>6){setValid(true);}
     },500);
-    return ()=>{clearTimeout(identifier);}},[UserName,UserPassword]
+    return ()=>{clearTimeout(identifier);}},[userNameState.UserName,UserPasswordState.UserPassword]
 );
-const BlurHandlerUserName=()=>{ if(UserName.includes('@')){setstring((string)=>{return {...string ,string1: false
-    
-        }})}
-else{setstring((string)=>{return { ...string ,string1: true
-   
-        }})}}
+const BlurHandlerUserName=()=>{ if(userNameState.UserName.includes('@')){setuserNameState({type:"Blur",val:false})}
+else{setuserNameState({type:"Blur",val:true})}}
 
  const BlurHandlerUserPassword=()=>{
-            if(UserPassword.trim().length>6){setstring((string)=>{return {...string ,string2: false
-                
-                    }})}
-            else{setstring((string)=>{return {  ...string ,string2: true
-          
-                }})}
+            if(UserPasswordState.UserPassword.trim().length>6){setUserPasswordState({type:"Blur",val:false})}
+        else{setUserPasswordState({type:"Blur",val:true})}
+        }
+        const popclick=()=>{
+            setpop(false);
         }
 
     return (
         <Card>
+        {pop&&<PopUpBox click={popclick}><div>Wrong User Name or Password</div></PopUpBox>}
             <form onSubmit={formSubmitHandler}>
             <h1 id="heading">LOGIN</h1>
                 <div className={`Expense-form `}  >
                
-                    <label>Email</label><input onBlur={BlurHandlerUserName} onChange={ChangeHandlerUserName} style={{borderColor:string.string1?'red':'white'}} type="text"></input>
+                    <label>Email</label><input onBlur={BlurHandlerUserName} onChange={ChangeHandlerUserName} style={{borderColor:userNameState.isValid?'red':'white'}} type="text"></input>
                 </div>
                 <div className={`Expense-form `}>
-                    <label>Password</label><input onBlur={BlurHandlerUserPassword} style={{borderColor:string.string2?'red':'white'}} onChange={ChangeHandlerUserPassword} type="password"></input>
+                    <label>Password</label><input onBlur={BlurHandlerUserPassword} style={{borderColor:UserPasswordState.isValid?'red':'white'}} onChange={ChangeHandlerUserPassword} type="password"></input>
                 </div>
                 <div >
                 <button className="new-expense-button" style={{marginLeft:"120px",backgroundColor:valid?"#440BD4":"grey"}}>Login</button>

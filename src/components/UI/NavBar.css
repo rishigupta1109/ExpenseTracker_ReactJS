@@ -2,7 +2,8 @@
     background-color:#04005E;
     color:white;
     display: flex;
-    /* justify-content: center; */
+    /* flex-direction: row; */
+    /* justify-content: center;flex-wrap: wrap; */
     font-family: sans-serif;
     font-weight: bolder;
     font-style: italic;
@@ -14,8 +15,11 @@
 }
 @media(max-width:800px){
     #logout-button{
-        margin-left: 100px;
+        margin-left: 30px;
     
+    }
+    #User{
+        margin-left:30px !important;
     }
     #navBar{
         

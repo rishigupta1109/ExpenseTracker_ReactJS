@@ -126,6 +126,7 @@ const LoginformSubmitHandler=()=>{
  const logout=()=>{
   setIsLoggedIn(false);
   localStorage.removeItem("LoggedIn")
+  localStorage.removeItem("UserName")
  }
  useEffect(()=>{
   if(localStorage.getItem("LoggedIn")==='1'){setIsLoggedIn(true);}
